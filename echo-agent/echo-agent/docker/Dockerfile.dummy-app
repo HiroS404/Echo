@@ -1,0 +1,11 @@
+# Use a lightweight Python image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the dummy application script
+COPY dummy_app.py .
+
+# Run the dummy application
+CMD ["python", "dummy_app.py"]

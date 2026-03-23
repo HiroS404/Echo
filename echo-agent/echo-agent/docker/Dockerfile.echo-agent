@@ -1,0 +1,20 @@
+# Use the official Drogon Docker image as a base
+FROM drogonframework/drogon:latest
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the project files into the container
+COPY . .
+
+# Build the Echo Agent application
+RUN mkdir build && \
+    cd build && \
+    cmake .. && \
+    make
+
+# Expose the application port
+EXPOSE 8080
+
+# Start the Echo Agent
+CMD ["./build/echo_agent"]

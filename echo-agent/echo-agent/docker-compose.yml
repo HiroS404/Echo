@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  echo-agent:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.echo-agent
+    container_name: echo-agent
+    volumes:
+      # Mount the Docker Socket into the container
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dummy-app
+
+  dummy-app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.dummy-app
+    container_name: dummy-app
+    # Ensure the container name is consistent for the Echo Agent
+    # to find and monitor it.
+    restart: always

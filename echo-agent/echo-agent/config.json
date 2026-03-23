@@ -1,0 +1,18 @@
+{
+    "listeners": [
+        {
+            "address": "0.0.0.0",
+            "port": 8080,
+            "https": false
+        }
+    ],
+    "app": {
+        "number_of_threads": 1,
+        "enable_session": false,
+        "log": {
+            "log_path": "./",
+            "logfile_base_name": "echo_agent",
+            "log_level": "DEBUG"
+        }
+    }
+}
